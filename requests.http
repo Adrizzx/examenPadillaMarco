@@ -1,0 +1,50 @@
+### Listar usuarios
+GET http://localhost:3000/api/marcopadilla/users
+
+### Crear usuario valido
+POST http://localhost:3000/api/marcopadilla/users
+Content-Type: application/json
+
+{
+  "name": "Lucia Andrade",
+  "email": "lucia.andrade@test.com"
+}
+
+### Email duplicado (409)
+POST http://localhost:3000/api/marcopadilla/users
+Content-Type: application/json
+
+{
+  "name": "Otro Marco",
+  "email": "marco.padilla@espe.edu.ec"
+}
+
+### Email vacio (400)
+POST http://localhost:3000/api/marcopadilla/users
+Content-Type: application/json
+
+{
+  "name": "Sin Correo",
+  "email": ""
+}
+
+### Nombre invalido (400)
+POST http://localhost:3000/api/marcopadilla/users
+Content-Type: application/json
+
+{
+  "name": "123",
+  "email": "numero@test.com"
+}
+
+### Obtener usuario por id
+GET http://localhost:3000/api/marcopadilla/users/1
+
+### Usuario inexistente (404)
+GET http://localhost:3000/api/marcopadilla/users/999
+
+### Eliminar usuario
+DELETE http://localhost:3000/api/marcopadilla/users/2
+
+### Endpoint que no existe (404)
+GET http://localhost:3000/api/marcopadilla/productos
