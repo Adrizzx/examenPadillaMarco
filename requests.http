@@ -46,5 +46,8 @@ GET http://localhost:3000/api/marcopadilla/users/999
 ### Eliminar usuario
 DELETE http://localhost:3000/api/marcopadilla/users/2
 
+### Verificar que el usuario eliminado ya no existe (404)
+GET http://localhost:3000/api/marcopadilla/users/2
+
 ### Endpoint que no existe (404)
 GET http://localhost:3000/api/marcopadilla/productos
