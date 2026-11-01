@@ -16,9 +16,12 @@ app.use((req, res) => {
   enviarError(req, res, 404, 'Endpoint no encontrado');
 });
 
-// JSON mal formado en el cuerpo de la petición
+// Manejo de errores: JSON mal formado (400) o error inesperado (500)
 app.use((err, req, res, _next) => {
-  enviarError(req, res, 400, 'El cuerpo de la petición no es un JSON válido');
+  if (err.type === 'entity.parse.failed') {
+    return enviarError(req, res, 400, 'El cuerpo de la petición no es un JSON válido');
+  }
+  return enviarError(req, res, 500, 'Error interno del servidor');
 });
 
 // El servidor solo se levanta al ejecutar el archivo, no al importarlo en las pruebas

@@ -7,7 +7,7 @@ API REST de usuarios hecha con Node.js y Express para el repaso del examen prác
 
 ## Requisitos
 
-- Node.js 18 o superior (probado con Node 22)
+- Node.js 20 o superior (probado con Node 22)
 - npm
 
 ## Instalación
@@ -46,6 +46,7 @@ npm install
 | Usuario inexistente | 404 | Usuario no encontrado |
 | Endpoint inexistente | 404 | Endpoint no encontrado |
 | JSON mal formado | 400 | El cuerpo de la petición no es un JSON válido |
+| Error inesperado | 500 | Error interno del servidor |
 
 Todos los errores responden con el formato:
 

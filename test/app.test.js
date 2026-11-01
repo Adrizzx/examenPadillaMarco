@@ -130,4 +130,23 @@ describe('API de usuarios /api/marcopadilla/users', () => {
     expect(response.status).toBe(400);
     expect(response.body.message).toBe('Name no puede ser un número o estar vacío');
   });
+  // 14. Error inesperado del servidor
+  test('debería devolver 500 si ocurre un error inesperado', async () => {
+    let appConError;
+    jest.isolateModules(() => {
+      jest.doMock('../src/routes/user.routes', () => {
+        const router = require('express').Router();
+        router.get('/', () => {
+          throw new Error('Fallo simulado');
+        });
+        return router;
+      });
+      appConError = require('../src/appPadillaMarco');
+    });
+
+    const response = await request(appConError).get(RUTA);
+
+    expect(response.status).toBe(500);
+    expect(response.body.message).toBe('Error interno del servidor');
+  });
 });

@@ -43,7 +43,7 @@ const obtenerUsuarios = (req, res) => {
 
 // POST /api/marcopadilla/users
 const crearUsuario = (req, res) => {
-  const { name, email } = req.body;
+  const { name, email } = req.body || {};
   const error = validarUsuario(name, email);
   if (error) {
     return enviarError(req, res, error.status, error.message);

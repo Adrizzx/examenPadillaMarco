@@ -29,7 +29,7 @@ module.exports = [
   {
     files: ['test/**/*.js'],
     languageOptions: {
-      globals: { describe: 'readonly', test: 'readonly', expect: 'readonly' }
+      globals: { describe: 'readonly', test: 'readonly', expect: 'readonly', jest: 'readonly' }
     },
     rules: { 'max-lines-per-function': 'off' }
   }
